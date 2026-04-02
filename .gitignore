@@ -20,7 +20,6 @@ __pycache__/
 .DS_Store
 ._*
 rough.py
-data/
 logs/
 
 # VS Code
