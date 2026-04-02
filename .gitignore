@@ -14,12 +14,14 @@ __pycache__/
 
 # Environment variables
 .env
+.env.template
 
 # MacOS
 .DS_Store
 ._*
 rough.py
 data/
+logs/
 
 # VS Code
 .vscode/
