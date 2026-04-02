@@ -1,0 +1,70 @@
+date,event_type,direction,description,source
+2018-01-16,ban,negative,South Korea announces potential crypto exchange ban,MOEF
+2018-03-07,enforcement,negative,SEC issues subpoenas to ICO projects and exchanges,SEC
+2018-03-09,guidance,neutral,G20 pledges crypto oversight framework by July 2018,G20
+2018-06-11,classification,positive,CFTC chair says Ethereum is a commodity not a security,CFTC
+2018-07-26,etf,negative,SEC rejects Winklevoss Bitcoin ETF application,SEC
+2018-08-22,etf,negative,SEC delays decision on nine Bitcoin ETF applications,SEC
+2018-09-20,etf,negative,SEC rejects ProShares and Direxion Bitcoin ETF applications,SEC
+2018-11-08,enforcement,negative,SEC charges EtherDelta founder for operating unregistered exchange,SEC
+2019-01-22,enforcement,negative,SEC charges BitConnect promoters with fraud,SEC
+2019-03-11,guidance,positive,SEC releases framework for digital asset investment contracts,SEC
+2019-04-03,enforcement,negative,SEC sues Kik Interactive over $100M ICO,SEC
+2019-05-07,hack,negative,Binance reports $40M Bitcoin hack,Binance
+2019-06-18,launch,positive,Facebook announces Libra stablecoin project,Facebook
+2019-07-15,hearing,negative,Congressional hearings cast doubt on Libra,Congress
+2019-08-19,guidance,positive,Wyoming passes crypto-friendly banking charter laws,Wyoming
+2019-10-11,etf,negative,SEC rejects Bitwise Bitcoin ETF application,SEC
+2019-10-23,hearing,negative,Facebook Libra faces hostile Senate hearing,Senate
+2019-12-09,enforcement,negative,CFTC fines BitMEX founders for illegal trading,CFTC
+2020-01-10,guidance,positive,FATF releases updated virtual asset guidance,FATF
+2020-03-13,macro,negative,COVID-19 crash — crypto falls 50pct in two days,Market
+2020-07-22,guidance,positive,OCC allows US national banks to hold crypto assets,OCC
+2020-08-11,institutional,positive,MicroStrategy announces first Bitcoin treasury purchase,MicroStrategy
+2020-10-08,institutional,positive,Square purchases $50M in Bitcoin,Square
+2020-10-21,institutional,positive,PayPal announces crypto buy/sell for US customers,PayPal
+2020-12-16,institutional,positive,Bitcoin surpasses previous ATH of $20K,Market
+2021-01-20,enforcement,negative,Ripple/XRP SEC lawsuit — XRP delisted from Coinbase,SEC
+2021-02-08,institutional,positive,Tesla announces $1.5B Bitcoin purchase,Tesla
+2021-02-11,etf,positive,Purpose Bitcoin ETF launches on Toronto Stock Exchange,OSC
+2021-04-14,listing,positive,Coinbase direct listing on Nasdaq,Nasdaq
+2021-05-12,institutional,negative,Tesla reverses Bitcoin payment policy over environmental concerns,Tesla
+2021-05-19,ban,negative,China bans financial institutions from crypto services,PBOC
+2021-06-21,ban,negative,China bans all crypto mining in multiple provinces,China
+2021-09-07,adoption,positive,El Salvador officially makes Bitcoin legal tender,El Salvador
+2021-09-24,ban,negative,China declares all crypto transactions illegal,PBOC
+2021-10-19,etf,positive,ProShares Bitcoin Strategy ETF (BITO) launches on NYSE,SEC
+2021-11-09,etf,positive,Valkyrie Bitcoin Strategy ETF launches,SEC
+2022-01-20,macro,negative,Fed signals aggressive rate hikes — crypto risk-off,Fed
+2022-03-09,executive_order,positive,Biden executive order on responsible crypto development,White House
+2022-05-09,collapse,negative,Terra/LUNA algorithmic stablecoin begins death spiral,Market
+2022-05-12,collapse,negative,UST loses peg — $40B wiped in days,Market
+2022-06-13,contagion,negative,Celsius Network halts withdrawals,Celsius
+2022-06-17,contagion,negative,Three Arrows Capital insolvency reported,3AC
+2022-07-13,enforcement,negative,SEC charges Coinbase insider trading,SEC
+2022-09-15,protocol,neutral,Ethereum Merge — transition to Proof of Stake,Ethereum
+2022-11-08,collapse,negative,FTX liquidity crisis begins,FTX
+2022-11-11,collapse,negative,FTX files for bankruptcy — $8B shortfall,FTX
+2022-11-18,contagion,negative,BlockFi files for bankruptcy citing FTX exposure,BlockFi
+2022-12-13,enforcement,negative,SBF arrested in Bahamas,DOJ
+2023-02-13,enforcement,negative,SEC charges Kraken over staking program,SEC
+2023-03-10,macro,negative,Silicon Valley Bank failure — USDC briefly depegs,FDIC
+2023-03-22,enforcement,negative,CFTC sues Binance and CZ for regulatory violations,CFTC
+2023-06-05,enforcement,negative,SEC sues Binance and CZ for securities violations,SEC
+2023-06-06,enforcement,negative,SEC sues Coinbase for operating as unregistered exchange,SEC
+2023-06-13,ruling,positive,Ripple wins partial summary judgment — XRP not a security in secondary sales,SDNY
+2023-08-29,etf,positive,DC Circuit Court rules SEC must review Grayscale Bitcoin ETF,DC Circuit
+2023-10-23,etf,positive,SEC does not appeal Grayscale ruling — ETF approval pathway opens,SEC
+2024-01-10,etf,positive,SEC approves 11 spot Bitcoin ETFs including BlackRock iShares,SEC
+2024-01-11,etf,positive,Spot Bitcoin ETFs begin trading — $4.6B volume on day one,Market
+2024-03-05,market,positive,Bitcoin surpasses $69K all-time high,Market
+2024-04-20,protocol,positive,Bitcoin halving — block reward cut to 3.125 BTC,Bitcoin
+2024-05-23,etf,positive,SEC approves spot Ethereum ETFs in principle,SEC
+2024-07-23,etf,positive,Spot Ethereum ETFs begin trading on US exchanges,SEC
+2024-08-05,macro,negative,Global market crash — Yen carry trade unwind,BOJ
+2024-11-06,political,positive,Trump wins US presidential election — crypto-friendly administration expected,Election
+2024-12-05,market,positive,Bitcoin surpasses $100K for first time,Market
+2024-12-19,guidance,positive,Paul Atkins nominated as SEC chair,White House
+2025-01-20,executive_order,positive,Trump signs executive order on digital assets,White House
+2025-01-23,reserve,positive,Trump signs order creating Strategic Bitcoin Reserve working group,White House
+2025-03-07,reserve,positive,Executive order establishing Strategic Bitcoin Reserve signed,White House
