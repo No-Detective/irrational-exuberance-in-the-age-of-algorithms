@@ -847,11 +847,11 @@ All Python dependencies with minimum version pins.
 ## 6. Pipeline Architecture
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│  Step 1: COLLECTORS  (parallel sources → raw Parquet shards) │
+┌───────────────────────────────────────────────────────────────┐
+│  Step 1: COLLECTORS  (parallel sources → raw Parquet shards)  │
 │                                                               │
-│  equity_collector.py ──────────────┐                         │
-│    ├── SPY, VIX, XLK, XLF, Gold    │                         │
+│  equity_collector.py ───────────────┐                         │
+│    ├── SPY, VIX, XLK, XLF, Gold     │                         │
 │    ├── Baker-Wurgler (BW + UMCSENT) │  data/raw/equity/       │
 │    └── EPU (FRED)                   │                         │
 │                                     │                         │
@@ -870,64 +870,64 @@ All Python dependencies with minimum version pins.
 │    └── GDELT [DISABLED]             │                         │
 │                                     │                         │
 │  macro_collector.py ────────────────┤  data/raw/macro/        │
-│    └── 6 FRED series               │                         │
+│    └── 6 FRED series                │                         │
 │                                     │                         │
-│  regulatory_collector.py ───────────┘  data/raw/macro/       │
+│  regulatory_collector.py ───────────┘  data/raw/macro/        │
 │    └── LW Tracker → daily dummies   │                         │
-└─────────────────────────────────────────────────────────────┘
+└───────────────────────────────────────────────────────────────┘
                            │
                            ▼
-┌─────────────────────────────────────────────────────────────┐
-│  Step 2: TRANSFORMER  (transformer.py)                       │
+┌───────────────────────────────────────────────────────────────┐
+│  Step 2: TRANSFORMER  (transformer.py)                        │
 │                                                               │
-│  • Master date index: 2018-01-01 → 2025-12-31 (2922 days)   │
+│  • Master date index: 2018-01-01 → 2025-12-31 (2922 days)     │
 │  • Left-join all shards                                       │
-│  • Monthly → daily: Baker-Wurgler (ffill within month)       │
+│  • Monthly → daily: Baker-Wurgler (ffill within month)        │
 │  • Weekly → daily: Google Trends (ffill)                      │
 │  • Derive: bitcoin_mcap, stablecoin_supply_ratio              │
 │  • Log transforms: 6 skewed variables                         │
-│  • Missing value policy (ffill / fillna(0) by type)          │
+│  • Missing value policy (ffill / fillna(0) by type)           │
 │                                                               │
-│  → master_panel.parquet  (2922 × 50)                         │
-└─────────────────────────────────────────────────────────────┘
+│  → master_panel.parquet  (2922 × 50)                          │
+└───────────────────────────────────────────────────────────────┘
                            │
                            ▼
-┌─────────────────────────────────────────────────────────────┐
+┌──────────────────────────────────────────────────────────────┐
 │  Step 3: FEATURE ENGINEERING  (feature_engineering.py)       │
-│                                                               │
+│                                                              │
 │  • crypto_sentiment_composite  ← Google Trends PCA           │
 │    PC1([btc,buy_btc,eth,crypto SVI]) − z(crypto_crash SVI)   │
 │    Sign-normalised vs BTC return (corr = +0.078 ✓)           │
-│                                                               │
+│                                                              │
 │  • algo_intensity               ← BTC vol × |SPY/VIX| proxy  │
 │  • btc_rv_proxy                 ← |daily return| × √252      │
 │  • spy_rv_proxy                 ← |daily return| × √252      │
 │  • btc_sp500_corr_30d           ← rolling 30-day Pearson     │
 │  • reg_dummy_{pos,neg,net}      ← from regulatory parquet    │
-│                                                               │
+│                                                              │
 │  → master_panel_features.parquet  (2922 × 56)                │
-└─────────────────────────────────────────────────────────────┘
+└──────────────────────────────────────────────────────────────┘
                            │
                            ▼
-┌─────────────────────────────────────────────────────────────┐
-│  Step 4: ORTHOGONALIZATION  (orthogonalization.py)           │
+┌───────────────────────────────────────────────────────────────┐
+│  Step 4: ORTHOGONALIZATION  (orthogonalization.py)            │
 │                                                               │
 │  Equation 1 OLS:                                              │
-│  Sentiment_t = α + β₁·BTC_{t-1} + β₂·ETH_{t-1}             │
-│               + β₃·RV_{t-1} + β₄·HashRate_{t-1}             │
-│               + β₅·ActiveAddr_{t-1} + β₆·TxCount_{t-1}      │
-│               + β₇·FedFunds + β₈·DXY + β₉·VIX              │
-│               + β₁₀·Gold + β₁₁·RegDummy + ε_t              │
+│  Sentiment_t = α + β₁·BTC_{t-1} + β₂·ETH_{t-1}                │
+│               + β₃·RV_{t-1} + β₄·HashRate_{t-1}               │
+│               + β₅·ActiveAddr_{t-1} + β₆·TxCount_{t-1}        │
+│               + β₇·FedFunds + β₈·DXY + β₉·VIX                 │
+│               + β₁₀·Gold + β₁₁·RegDummy + ε_t                 │
 │                                                               │
 │  HAC (Newey-West, maxlags=5)                                  │
 │  n=2920, k=12                                                 │
-│  R²=0.0556, F p-val=2.80×10⁻¹⁰ ***                          │
-│  corr(rational, irrational) = −1.71×10⁻⁸ ≈ 0 ✓             │
+│  R²=0.0556, F p-val=2.80×10⁻¹⁰ ***                            │
+│  corr(rational, irrational) = −1.71×10⁻⁸ ≈ 0 ✓                │
 │                                                               │
-│  → master_panel_final.parquet  (2922 × 59)                   │
+│  → master_panel_final.parquet  (2922 × 59)                    │
 │    rational_sentiment:   2920 obs                             │
-│    irrational_sentiment: 2920 obs  ← paper's main variable   │
-└─────────────────────────────────────────────────────────────┘
+│    irrational_sentiment: 2920 obs  ← paper's main variable    │
+└───────────────────────────────────────────────────────────────┘
 ```
 
 ---
