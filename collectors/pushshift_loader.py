@@ -255,6 +255,7 @@ def collect_pushshift_reddit(
     end_ts   = pd.Timestamp(end).timestamp()
 
     all_records = []
+    seen_paths  = set()   # prevent processing the same .zst file twice
 
     for subreddit in SUBREDDITS:
         for file_type in FILE_TYPES:
@@ -263,6 +264,10 @@ def collect_pushshift_reddit(
                 continue
 
             for dump_path in dump_files:
+                if dump_path.resolve() in seen_paths:
+                    logger.info(f"  Skipping {dump_path.name} (already processed)")
+                    continue
+                seen_paths.add(dump_path.resolve())
                 logger.info(f"  Reading {dump_path.name}...")
                 count = 0
                 skipped_date = 0
@@ -320,7 +325,7 @@ def collect_pushshift_reddit(
     logger.info(f"  Running NLP scoring ({scorer})...")
 
     df_raw = pd.DataFrame(all_records)
-    df_raw["date"] = pd.DatetimeIndex(pd.to_datetime(df_raw["date"]))
+    df_raw.loc[:, "date"] = pd.DatetimeIndex(pd.to_datetime(df_raw["date"]))
 
     # NLP scoring in one batch pass
     t0 = time.time()

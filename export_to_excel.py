@@ -244,11 +244,8 @@ def _write_sheet(wb: Workbook, sheet_name: str, df: pd.DataFrame,
 
     # ── Column widths ─────────────────────────────────────────────────────────
     for c_idx, col in enumerate(cols, 1):
-        max_len = max(
-            len(str(col)),
-            *[len(str(v)) for v in df[col].dropna().head(100).astype(str)],
-            default=MIN_COL_WIDTH,
-        )
+        vals = [len(str(v)) for v in df[col].dropna().head(100).astype(str)]
+        max_len = max([len(str(col))] + vals) if vals else MIN_COL_WIDTH
         ws.column_dimensions[get_column_letter(c_idx)].width = (
             min(max_len + 2, MAX_COL_WIDTH)
         )

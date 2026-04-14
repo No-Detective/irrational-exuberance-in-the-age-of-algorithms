@@ -62,7 +62,7 @@ REGRESSORS = {
 # Column fallbacks in priority order
 FALLBACKS = {
     "btc_rv_intraday_ann": ["btc_rv_proxy", "bitcoin_rv"],
-    "active_addresses":    ["active_addresses", "nupl", "log_bitcoin_volume"],
+    "active_addresses":    ["log_bitcoin_volume", "active_addresses", "nupl"],  # log_bitcoin_volume covers full 2018-2025
     "btc_daily_tx_count":  ["btc_daily_tx_count", "log_bitcoin_volume"],
     "btc_hash_rate":       ["btc_hash_rate", "log_bitcoin_volume"],
 }

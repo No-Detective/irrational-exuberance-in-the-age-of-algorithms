@@ -24,5 +24,11 @@ logs/
 
 # VS Code
 .vscode/
-
 *.zst
+
+# Data files
+data/
+data/*parquet
+*.xlsx
+*.csv
+*.json

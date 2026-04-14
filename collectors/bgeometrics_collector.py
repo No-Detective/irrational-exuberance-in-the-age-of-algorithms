@@ -113,6 +113,17 @@ def _parse_response(raw, col_name: str) -> pd.Series:
         dates  = pd.to_datetime([r[0] for r in raw], unit="s").normalize()
         values = [float(r[1]) for r in raw]
 
+    # Variant E: BGeometrics format {"d": "YYYY-MM-DD", "unixTs": "...", "<metric>": "0.38"}
+    elif "d" in raw[0]:
+        dates = pd.to_datetime([r["d"] for r in raw])
+        # Auto-detect value key: exclude known non-value keys
+        non_val = {"d", "unixTs", "t", "date", "timestamp"}
+        sample  = raw[0]
+        v_key   = next((k for k in sample if k not in non_val), None)
+        if not v_key:
+            raise ValueError(f"Cannot find value key in BGeometrics response: {list(sample.keys())}")
+        values = [float(r.get(v_key, np.nan)) for r in raw]
+
     else:
         # Last resort: try every key for timestamp and value
         sample = raw[0]
