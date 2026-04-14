@@ -24,3 +24,5 @@ logs/
 
 # VS Code
 .vscode/
+
+*.zst

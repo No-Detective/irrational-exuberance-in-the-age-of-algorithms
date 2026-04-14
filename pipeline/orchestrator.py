@@ -101,6 +101,7 @@ def run_full_collection(start: str = START_DATE, end: str = END_DATE, force: boo
 
     # Lazy imports (avoid circular import at module level)
     from collectors.equity_collector     import collect_equity, collect_baker_wurgler, collect_epu
+    from collectors.bgeometrics_collector import collect_bgeometrics
     from collectors.crypto_collector     import (collect_crypto_prices, collect_coinmetrics,
                                                   collect_blockchain_stats,
                                                   collect_defillama_stablecoin, collect_coinglass)
@@ -124,6 +125,7 @@ def run_full_collection(start: str = START_DATE, end: str = END_DATE, force: boo
         # On-chain
         ("coinmetrics_onchain", lambda: collect_coinmetrics(start, end)),
         ("blockchain_stats",    lambda: collect_blockchain_stats(start, end)),
+        ("bgeometrics_onchain", lambda: collect_bgeometrics(start, end)),
         ("defillama_stablecoin",lambda: collect_defillama_stablecoin(start, end)),
         # Futures
         ("coinglass_futures",   lambda: collect_coinglass(start, end)),

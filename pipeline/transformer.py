@@ -95,6 +95,7 @@ def build_master_panel(start: str = START_DATE, end: str = END_DATE) -> pd.DataF
     equity   = _load(RAW_DIR / "equity"    / "equity_daily.parquet",         "equity")
     crypto   = _load(RAW_DIR / "crypto"    / "crypto_prices.parquet",         "crypto prices")
     gn       = _load(RAW_DIR / "onchain"   / "glassnode.parquet",             "glassnode")
+    bg       = _load(RAW_DIR / "onchain"   / "bgeometrics_onchain.parquet",   "bgeometrics")
     bc       = _load(RAW_DIR / "onchain"   / "blockchain_stats.parquet",      "blockchain.com")
     stable   = _load(RAW_DIR / "onchain"   / "defillama_stablecoin.parquet",  "defillama")
     futures  = _load(RAW_DIR / "futures"   / "coinglass_futures.parquet",     "coinglass")
@@ -114,7 +115,7 @@ def build_master_panel(start: str = START_DATE, end: str = END_DATE) -> pd.DataF
     # ── Merge daily-frequency shards ──────────────────────
     for df, label in [
         (equity,  "equity"),    (crypto,  "crypto"),
-        (gn,      "glassnode"), (bc,      "blockchain"),
+        (gn,      "glassnode"), (bg,      "bgeometrics"), (bc,      "blockchain"),
         (stable,  "defillama"), (futures, "futures"),
         (st,      "stocktwits"),(reddit,  "reddit"),
         (fg,      "fear_greed"),(gdelt,   "gdelt"),
