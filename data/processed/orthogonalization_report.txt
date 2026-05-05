@@ -3,52 +3,52 @@ ORTHOGONALIZATION REPORT — Equation 1 (Section 3.3.2)
 ======================================================================
 Sentiment variable : crypto_sentiment_composite
 Observations       : 2920
-R²                 : 0.0556
-Adjusted R²        : 0.0520
-F-statistic        : 6.25  (p = 2.8020e-10)
+R²                 : 0.0404
+Adjusted R²        : 0.0367
+F-statistic        : 5.33  (p = 2.0243e-08)
 HAC std errors     : Newey-West, maxlags=5
 
 ── Coefficient Table ──────────────────────────────────────────────
 ====================================================================================
                        coef    std err          z      P>|z|      [0.025      0.975]
 ------------------------------------------------------------------------------------
-const               -2.9019      1.326     -2.188      0.029      -5.501      -0.303
-btc_return_lag1     -0.3256      1.097     -0.297      0.767      -2.476       1.825
-eth_return_lag1      2.0936      0.874      2.396      0.017       0.381       3.806
-btc_vol_lag1         0.0082      0.061      0.135      0.893      -0.111       0.127
-hash_rate_lag1   -6.405e-10   3.31e-10     -1.935      0.053   -1.29e-09    8.38e-12
-active_addr_lag1     0.1479      0.057      2.588      0.010       0.036       0.260
-tx_count_lag1    -1.511e-06   3.59e-07     -4.208      0.000   -2.21e-06   -8.07e-07
-fed_funds_rate       0.1446      0.036      4.053      0.000       0.075       0.215
-dxy_return          -2.5972      6.243     -0.416      0.677     -14.834       9.639
-vix                 -0.0142      0.004     -3.199      0.001      -0.023      -0.006
-gold_return         -1.2119      2.470     -0.491      0.624      -6.053       3.629
-reg_dummy_net        0.0458      0.169      0.272      0.786      -0.285       0.376
+const               -3.1629      1.181     -2.679      0.007      -5.477      -0.848
+btc_return_lag1     -1.0840      1.128     -0.961      0.337      -3.295       1.127
+eth_return_lag1      3.2559      0.985      3.305      0.001       1.325       5.187
+btc_vol_lag1        -0.0408      0.055     -0.739      0.460      -0.149       0.067
+hash_rate_lag1   -2.697e-10   3.41e-10     -0.790      0.429   -9.39e-10    3.99e-10
+active_addr_lag1     0.1603      0.051      3.117      0.002       0.060       0.261
+tx_count_lag1     -8.84e-07   3.58e-07     -2.471      0.013   -1.59e-06   -1.83e-07
+fed_funds_rate       0.0410      0.032      1.289      0.198      -0.021       0.103
+dxy_return          -4.5333      5.986     -0.757      0.449     -16.266       7.199
+vix                 -0.0184      0.004     -4.233      0.000      -0.027      -0.010
+gold_return         -2.8134      2.692     -1.045      0.296      -8.089       2.462
+reg_dummy_net       -0.0150      0.209     -0.072      0.943      -0.424       0.394
 ====================================================================================
 
 ── Decomposition ──────────────────────────────────────────────────
-rational_sentiment  (fitted):   mean=-0.0001  std=0.2358
-irrational_sentiment (resid):   mean=0.000000  std=0.9721
-Orthogonality check: corr(rational, irrational) = -0.0000000171  (target: ~0)
+rational_sentiment  (fitted):   mean=-0.0005  std=0.2009
+irrational_sentiment (resid):   mean=0.000000  std=0.9798
+Orthogonality check: corr(rational, irrational) = -0.0000000103  (target: ~0)
 
-Interpretation: 5.6% of raw sentiment is explained by
-fundamentals (rational_sentiment). The remaining 94.4%
+Interpretation: 4.0% of raw sentiment is explained by
+fundamentals (rational_sentiment). The remaining 96.0%
 is irrational_sentiment — the paper's primary independent variable.
 
 ── Sensitivity Analysis (leave-one-out) ────────────────────────
                       r2  r2_change  corr_with_base_resid
 dropped                                                  
-btc_return_lag1   0.0555    -0.0000                1.0000
-eth_return_lag1   0.0528    -0.0027                0.9986
-btc_vol_lag1      0.0556    -0.0000                1.0000
-hash_rate_lag1    0.0452    -0.0104                0.9946
-active_addr_lag1  0.0486    -0.0070                0.9963
-tx_count_lag1     0.0385    -0.0170                0.9911
-fed_funds_rate    0.0309    -0.0247                0.9872
-dxy_return        0.0555    -0.0001                0.9999
-vix               0.0468    -0.0088                0.9954
-gold_return       0.0555    -0.0001                0.9999
-reg_dummy_net     0.0555    -0.0000                1.0000
+btc_return_lag1   0.0399    -0.0004                0.9998
+eth_return_lag1   0.0337    -0.0066                0.9966
+btc_vol_lag1      0.0401    -0.0002                0.9999
+hash_rate_lag1    0.0385    -0.0018                0.9990
+active_addr_lag1  0.0321    -0.0082                0.9957
+tx_count_lag1     0.0345    -0.0058                0.9970
+fed_funds_rate    0.0384    -0.0020                0.9990
+dxy_return        0.0401    -0.0003                0.9998
+vix               0.0256    -0.0148                0.9924
+gold_return       0.0397    -0.0006                0.9997
+reg_dummy_net     0.0404    -0.0000                1.0000
 
   corr_with_base_resid ≥ 0.95 = residual is stable.
 
