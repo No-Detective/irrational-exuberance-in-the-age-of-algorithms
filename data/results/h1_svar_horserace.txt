@@ -1,0 +1,24 @@
+======================================================================
+H1: HORSE-RACE SVAR — Rational vs Irrational Sentiment
+======================================================================
+
+  Both rational_sentiment and irrational_sentiment included simultaneously.
+  If irrational dominates → strong support for H1.
+
+  Variable                                       Coef         SE        t
+  ----------------------------------------------------------------------
+  const                                      -0.01093    0.00906   -1.207 
+  L1.rational_sentiment                      -0.00137    0.00212   -0.648 
+  L1.irrational_sentiment                     0.00015    0.00034    0.449 
+  L2.rational_sentiment                       0.00054    0.00217    0.251 
+  L2.irrational_sentiment                    -0.00003    0.00036   -0.083 
+  L3.rational_sentiment                       0.00223    0.00218    1.023 
+  L3.irrational_sentiment                     0.00011    0.00036    0.315 
+  L4.rational_sentiment                      -0.00141    0.00218   -0.643 
+  L4.irrational_sentiment                    -0.00046    0.00036   -1.255 
+  L5.rational_sentiment                       0.00214    0.00217    0.987 
+  L5.irrational_sentiment                     0.00044    0.00036    1.211 
+  L6.rational_sentiment                      -0.00231    0.00213   -1.085 
+  L6.irrational_sentiment                    -0.00013    0.00036   -0.357 
+  L7.rational_sentiment                      -0.00080    0.00159   -0.501 
+  L7.irrational_sentiment                     0.00034    0.00034    1.023 

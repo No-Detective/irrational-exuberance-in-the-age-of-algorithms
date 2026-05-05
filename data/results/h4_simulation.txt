@@ -1,0 +1,35 @@
+======================================================================
+H4: AGENT-BASED SIMULATION RESULTS
+======================================================================
+
+  Simulation: 10,000 runs × 2555 periods
+  Calibrated to: irr_std=0.9798, beta_irr=0.000223
+  Empirical cross-market corr: 0.2569
+
+  Condition                        Cross-Corr     Eq Vol     Kurt   Vol-AC
+  ------------------------------------------------------------------------
+  No AI (Baseline)                     0.0840   0.006515   -0.002   0.0018
+  AI-Rational                          0.0845   0.006532   -0.002   0.0019
+  AI-Irrational (H4 prediction)        0.0948   0.006589   -0.003   0.0014
+  AI-Full                              0.0956   0.006605   -0.002   0.0018
+
+── KS Tests: AI-Irrational vs Other Conditions ──────────────────
+
+  AI-Irrational vs No AI (Baseline):
+    Cross-corr KS: D=0.2133, p=0.0000
+    Eq. vol    KS: D=0.3153, p=0.0000
+
+  AI-Irrational vs AI-Rational:
+    Cross-corr KS: D=0.2032, p=0.0000
+    Eq. vol    KS: D=0.2450, p=0.0000
+
+  AI-Irrational vs AI-Full:
+    Cross-corr KS: D=0.0240, p=0.0063
+    Eq. vol    KS: D=0.0680, p=0.0000
+
+── Interpretation ────────────────────────────────────────────────
+
+  H4 is supported if AI-Irrational shows:
+  (1) Higher cross-corr than no_ai: YES ✓
+  (2) Higher eq_vol than ai_rational: YES ✓
+  (3) Higher kurtosis (fatter tails): NO ✗

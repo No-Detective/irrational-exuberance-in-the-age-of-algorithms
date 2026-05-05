@@ -1,0 +1,62 @@
+======================================================================
+H2: ON-CHAIN MEDIATION OF IRRATIONAL SENTIMENT
+======================================================================
+
+  Baron-Kenny framework (adapted for time series with lagged predictors).
+  Three equations per mediator:
+
+    (A) bitcoin_return_{t} = a + b·irrational_sentiment_{t-1} + controls + ε
+    (B) mediator_{t}        = a + c·irrational_sentiment_{t-1} + controls + ε
+    (C) bitcoin_return_{t}  = a + b'·irrational_sentiment_{t-1}
+                                + d·mediator_{t-1} + controls + ε
+
+  Indirect effect = c × d  (Sobel test + 5000-rep bootstrap)
+  Mediation if: b significant, c significant, |b'| < |b|
+
+────────────────────────────────────────────────────────────
+  Mediator: log_btc_daily_tx_count (Transaction count (on-chain activity proxy, 2018-2025))
+  n = 2919 obs
+  (A) Total effect       b  = +0.00004  (p=0.9398) n.s.
+  (B) Sentiment→Mediator c  = -0.00466  (p=0.6209) n.s.
+  (C) Direct effect      b' = +0.00004  (p=0.9432) n.s.
+      Mediator effect    d  = -0.00067  (p=0.7622) n.s.
+  Indirect effect (c×d)  = +0.000003
+  Sobel Z = 0.258  (p=0.7963) n.s.
+  Bootstrap 95% CI: [-0.000028, +0.000039]
+  Mediation type: Partial
+
+────────────────────────────────────────────────────────────
+  Mediator: btc_miner_revenue_usd (Miner revenue (network health proxy, 2018-2025))
+  n = 2919 obs
+  (A) Total effect       b  = +0.00004  (p=0.9398) n.s.
+  (B) Sentiment→Mediator c  = +1999008.25193  (p=0.0002) ***
+  (C) Direct effect      b' = +0.00028  (p=0.6358) n.s.
+      Mediator effect    d  = -0.00000  (p=0.0054) **
+  Indirect effect (c×d)  = -0.000240
+  Sobel Z = -2.218  (p=0.0265) *
+  Bootstrap 95% CI: [-0.000439, -0.000078]
+  Mediation type: Partial
+
+────────────────────────────────────────────────────────────
+  Mediator: stablecoin_supply_ratio (Stablecoin ratio (speculative pressure proxy, 2018-2025))
+  n = 2919 obs
+  (A) Total effect       b  = +0.00004  (p=0.9398) n.s.
+  (B) Sentiment→Mediator c  = +3523.26569  (p=0.2227) n.s.
+  (C) Direct effect      b' = +0.00007  (p=0.9060) n.s.
+      Mediator effect    d  = -0.00000  (p=0.3888) n.s.
+  Indirect effect (c×d)  = -0.000025
+  Sobel Z = -0.704  (p=0.4815) n.s.
+  Bootstrap 95% CI: [-0.000090, +0.000047]
+  Mediation type: Partial
+
+────────────────────────────────────────────────────────────
+  Mediator: nupl (NUPL (holder profit/loss state, 2022-2025 only))
+  n = 1357 obs
+  (A) Total effect       b  = +0.00021  (p=0.7073) n.s.
+  (B) Sentiment→Mediator c  = +0.00837  (p=0.2695) n.s.
+  (C) Direct effect      b' = +0.00031  (p=0.5810) n.s.
+      Mediator effect    d  = -0.01341  (p=0.0016) **
+  Indirect effect (c×d)  = -0.000112
+  Sobel Z = -1.042  (p=0.2973) n.s.
+  Bootstrap 95% CI: [-0.000244, -0.000006]
+  Mediation type: Partial

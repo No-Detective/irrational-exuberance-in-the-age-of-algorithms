@@ -1,0 +1,61 @@
+======================================================================
+H1: IRRATIONAL SENTIMENT PREDICTABILITY
+======================================================================
+
+── 1. Unit Root Tests (ADF) ──────────────────────────────────────
+
+  irrational_sentiment                ADF p=0.0000  I(0)
+  rational_sentiment                  ADF p=0.0000  I(0)
+  sp500_return                        ADF p=0.0000  I(0)
+  bitcoin_return                      ADF p=0.0000  I(0)
+  vix_diff                            ADF p=0.0000  I(0)
+  algo_intensity                      ADF p=0.0000  I(0)
+
+── 2. Granger Causality Tests ────────────────────────────────────
+    Does irrational_sentiment Granger-cause sp500_return?
+
+  Lag  F-stat    p-value   Significant?
+  ------------------------------------------
+  1       0.607    0.4360   
+  2       0.344    0.7090   
+  3       0.368    0.7762   
+  4       0.295    0.8816   
+  5       0.359    0.8764   
+
+    Does sp500_return Granger-cause irrational_sentiment? (falsification)
+
+  Lag  F-stat    p-value   Significant?
+  ------------------------------------------
+  1       1.414    0.2345   
+  2       2.371    0.0936   
+  3       2.055    0.1040   
+  4       1.568    0.1802   
+  5       1.244    0.2857   
+
+── 3. SVAR — Irrational Sentiment Model (Primary, H1) ───────────
+
+  Lag selection (HQ): 7 lags
+  Observations: 2919
+  Log-likelihood: 9906.95
+  AIC: -20.87
+  BIC: -20.50
+
+  Equation: sp500_return
+
+  Variable                                       Coef         SE        t
+  ----------------------------------------------------------------------
+  const                                      -0.01175    0.00888   -1.323 
+  L1.irrational_sentiment                     0.00018    0.00033    0.531 
+  L1.bitcoin_return                          -0.00389    0.00674   -0.576 
+  L2.irrational_sentiment                    -0.00005    0.00035   -0.140 
+  L2.bitcoin_return                          -0.00917    0.00676   -1.357 
+  L3.irrational_sentiment                     0.00008    0.00036    0.233 
+  L3.bitcoin_return                           0.00144    0.00677    0.213 
+  L4.irrational_sentiment                    -0.00040    0.00036   -1.101 
+  L4.bitcoin_return                           0.00721    0.00676    1.067 
+  L5.irrational_sentiment                     0.00037    0.00036    1.024 
+  L5.bitcoin_return                          -0.02285    0.00677   -3.378 ***
+  L6.irrational_sentiment                    -0.00009    0.00035   -0.241 
+  L6.bitcoin_return                           0.00564    0.00677    0.833 
+  L7.irrational_sentiment                     0.00033    0.00033    0.984 
+  L7.bitcoin_return                          -0.00497    0.00674   -0.737 

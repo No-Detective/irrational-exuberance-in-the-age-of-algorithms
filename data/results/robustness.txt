@@ -1,0 +1,22 @@
+======================================================================
+ROBUSTNESS CHECKS
+======================================================================
+
+── Alternative Sentiment Proxies (→ sp500_return) ────────────────
+
+  Irrational Sentiment (primary)                coef=+0.000086  p=0.7831 n.s.  n=2919
+  Rational Sentiment (benchmark)                coef=-0.004396  p=0.0822 n.s.  n=2919
+  Raw Composite Sentiment                       coef=-0.000050  p=0.8561 n.s.  n=2919
+  Fear & Greed Index (alt. measure)             coef=-0.000015  p=0.1623 n.s.  n=2919
+  Google Trends Bitcoin SVI                     coef=+0.000023  p=0.1446 n.s.  n=2919
+
+── Out-of-Sample Validation ──────────────────────────────────────
+
+  Train: 2018-2022 (1823 obs)  Test: 2023-2025 (1096 obs)
+  Sentiment model OOS R² : -0.3418  (corr=0.0740)
+  Benchmark (no sentiment): -0.3418
+  OOS improvement: +0.0000
+
+── Weekend/Overnight Instrument ──────────────────────────────────
+
+  Insufficient Monday obs for IV estimation

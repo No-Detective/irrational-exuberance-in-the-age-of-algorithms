@@ -1,0 +1,33 @@
+======================================================================
+H3: ALGORITHMIC TRADING INTENSITY AS MODERATOR
+======================================================================
+
+  sp500_return_t = α + β1·irr_{t-1} + β2·algo_t
+                   + β3·(irr_{t-1} × algo_t) + controls + ε
+
+  Prediction: β3 > 0 (stronger spillover when algos are active)
+
+── Model 1: Main Effects (no interaction) ────────────────────────
+  n=2919, R²=0.0846, Adj-R²=0.0818
+
+  irr_lag1                     +0.000207  (0.000293)  t=+0.71 
+  rat_lag1                     -0.005473  (0.002293)  t=-2.39 *
+  algo_intensity               +0.000996  (0.000399)  t=+2.50 *
+  const                        +0.007145  (0.001292)  t=+5.53 ***
+
+── Model 2: With Interaction Terms ───────────────────────────────
+  n=2919, R²=0.0918, Adj-R²=0.0883
+
+  irr_lag1                     +0.000151  (0.000248)  t=+0.61 
+  rat_lag1                     -0.005057  (0.001734)  t=-2.92 **
+  algo_intensity               +0.000787  (0.000349)  t=+2.25 *
+  irr_x_algo                   +0.000164  (0.000424)  t=+0.39 
+  rat_x_algo                   -0.004178  (0.002794)  t=-1.50 
+  const                        +0.007370  (0.001350)  t=+5.46 ***
+
+── Regime Split: High vs Low Algo Intensity ──────────────────────
+
+  HIGH algo regime (n=1460):  irr_lag1=+0.000581  (p=0.2990) n.s.
+    R²=0.0970
+  LOW algo regime (n=1459):  irr_lag1=-0.000036  (p=0.7929) n.s.
+    R²=0.0848
