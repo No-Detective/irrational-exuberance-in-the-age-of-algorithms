@@ -27,7 +27,6 @@ logs/
 *.zst
 
 # Data files
-data/
 data/*parquet
 *.xlsx
 *.csv
