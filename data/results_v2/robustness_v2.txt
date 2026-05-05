@@ -1,0 +1,24 @@
+======================================================================
+ROBUSTNESS CHECKS
+======================================================================
+
+── H1b Robustness: Alternative Sentiment → SP500 ────────────────────
+
+  Irrational Sentiment (primary)          : bull coef=-0.00145, t=-1.86, p=0.0628 n.s.
+  Rational Sentiment (benchmark)          : bull coef=-0.00062, t=-1.05, p=0.2934 n.s.
+  Fear & Greed Index                      : bull coef=+0.00020, t=+0.29, p=0.7715 n.s.
+
+── H2 Robustness: Stablecoin with Extended Controls ──────────────────
+
+  stab_lag1 → BTC vol     : t=+7.62, p=0.0000 ***
+  stab_lag1 → SP500 vol   : t=+3.58, p=0.0003 ***
+
+── H3 Robustness: Algo effect controlling for AR(5) in correlation ─
+
+  algo_intensity           : t=+3.80, p=0.0001 ***  (after AR(5) controls)
+  extreme_irr_lag          : t=+1.81, p=0.0708 n.s.  (after AR(5) controls)
+
+── Out-of-Sample Validation (2018-2022 train / 2023-2025 test) ────────
+
+  H1b extreme dummy: OOS R² = -0.4886  (train n=1303, test n=783)
+  H2 stablecoin: OOS R² = -0.1005  (train n=1303, test n=783)

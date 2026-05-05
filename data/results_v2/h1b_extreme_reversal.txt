@@ -1,0 +1,42 @@
+======================================================================
+H1b: EXTREME IRRATIONAL SENTIMENT → SHORT-TERM EQUITY MEAN-REVERSION
+======================================================================
+
+  Non-linear specification: top/bottom decile irrational sentiment
+  dummies predict next-day equity returns.
+  Mechanism: noise-trader overshooting → mean-reversion (De Long et al. 1990)
+  DV: sp500_return_{t}, tech_etf_return_{t}, fin_etf_return_{t}
+
+── Robustness: Results Across Sentiment Thresholds ──────────────────
+
+  Threshold      bull_p   bear_p   bull_sig   bear_sig
+  ──────────────────────────────────────────────────────
+  p85/p15        0.0860   0.0649       n.s.       n.s.
+  p90/p10        0.0477   0.1436          *       n.s.
+  p95/p05        0.0249   0.2194          *       n.s.
+
+── Primary Model: p90/p10 Thresholds ─────────────────────────────────
+
+  DV: sp500_return   n=2085   R²=0.0763  Adj-R²=0.0728
+
+  Variable                           Coef         SE        t  Sig.
+  ──────────────────────────────────────────────────────────────
+  bull_lag1                      -0.00160    0.00081   -1.980  *
+  bear_lag1                      -0.00143    0.00097   -1.463  n.s.
+  const                           0.00687    0.00198    3.475  ***
+
+── Sector Heterogeneity ──────────────────────────────────────────────
+
+  S&P 500           : bull coef=-0.00160 *  bear coef=-0.00143 n.s.
+  XLK Tech ETF      : bull coef=-0.00172 n.s.  bear coef=-0.00160 n.s.
+  XLF Finance ETF   : bull coef=-0.00187 n.s.  bear coef=-0.00090 n.s.
+
+── Event-Window Cumulative Returns (h-day forward sum) ───────────────
+  h=1: immediate dip; h=2+: recovery and outperformance vs normal.
+  Result: short-term mean-reversion (1 day), not sustained reversal.
+
+  + 1d: bull=-0.00030  bear=-0.00007  normal=+nan
+  + 2d: bull=+0.00127  bear=+0.00027  normal=+nan
+  + 3d: bull=+0.00294  bear=+0.00068  normal=+nan
+  + 5d: bull=+0.00457  bear=+0.00160  normal=+nan
+  +10d: bull=+0.01123  bear=+0.00381  normal=+nan

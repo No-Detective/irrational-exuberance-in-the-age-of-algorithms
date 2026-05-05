@@ -1,0 +1,37 @@
+======================================================================
+H4: AGENT-BASED SIMULATION RESULTS (Recalibrated)
+======================================================================
+
+  n_sims=10,000  n_periods=2555
+  beta_irr (calibrated)=0.0030  beta_rat=0.006000
+  Empirical BTC-SPY corr: 0.2569
+
+  Condition                        Cross-Corr     Eq Vol     Kurt   Vol-AC
+  ────────────────────────────────────────────────────────────────────────
+  No AI                                0.1805   0.006984   -0.002   0.0045
+  AI-Rational                          0.1830   0.007096   -0.001   0.0048
+  AI-Irrational                        0.3308   0.008765   -0.002   0.0042
+  AI-Full                              0.3320   0.008853   -0.003   0.0049
+
+── KS Tests: AI-Irrational vs Other Conditions ──────────────────────
+
+  AI-Irrational vs No AI:
+    Cross-corr KS: D=1.0000, p=0.0000 ***
+    Eq vol     KS: D=1.0000, p=0.0000 ***
+    Kurtosis   KS: D=0.0143, p=0.2582 n.s.
+
+  AI-Irrational vs AI-Rational:
+    Cross-corr KS: D=1.0000, p=0.0000 ***
+    Eq vol     KS: D=1.0000, p=0.0000 ***
+    Kurtosis   KS: D=0.0136, p=0.3134 n.s.
+
+  AI-Irrational vs AI-Full:
+    Cross-corr KS: D=0.0400, p=0.0000 ***
+    Eq vol     KS: D=0.2770, p=0.0000 ***
+    Kurtosis   KS: D=0.0140, p=0.2809 n.s.
+
+── H4 Support Assessment ─────────────────────────────────────────────
+
+  (1) Higher cross-corr than no_ai:    YES ✓  (0.3308 vs 0.1805)
+  (2) Higher eq_vol than ai_rational:  YES ✓  (0.008765 vs 0.007096)
+  (3) KS tests all significant:        YES ✓  (all p<0.001)

@@ -1,0 +1,45 @@
+======================================================================
+H3: ALGORITHMIC TRADING SYNCHRONIZES CRYPTO-EQUITY MARKETS
+======================================================================
+
+  DV: BTC-SPY 30-day rolling correlation (range: [-0.42, +0.72])
+  Predictors: algo_intensity + extreme_irr_lag (both significant)
+  Mechanism: algos do not merely amplify sentiment — they structurally
+  couple the two markets; extreme sentiment episodes amplify this link.
+
+  M1: Algo only  n=2910  R²=0.9506
+
+  Variable                        Coef         SE        t  Sig.
+  ──────────────────────────────────────────────────────────
+  algo_intensity              0.004647   0.001358    3.422  ***
+  corr_lag1                   0.966337   0.004652  207.710  ***
+  const                      -0.003363   0.003380   -0.995  n.s.
+
+  M2: Extreme Irr only  n=2910  R²=0.9503
+
+  Variable                        Coef         SE        t  Sig.
+  ──────────────────────────────────────────────────────────
+  extreme_irr_lag             0.005828   0.002701    2.158  *
+  corr_lag1                   0.966374   0.004693  205.899  ***
+  const                      -0.006285   0.003505   -1.793  n.s.
+
+  M3: Both (Primary)  n=2910  R²=0.9507
+
+  Variable                        Coef         SE        t  Sig.
+  ──────────────────────────────────────────────────────────
+  algo_intensity              0.004584   0.001345    3.408  ***
+  extreme_irr_lag             0.005488   0.002678    2.049  *
+  corr_lag1                   0.965624   0.004691  205.845  ***
+  const                      -0.004217   0.003398   -1.241  n.s.
+
+── Regime Split: High vs Low Algo Intensity ──────────────────────────
+
+  High algo (n>median): extreme_irr coef=+0.00847, t=+2.02, p=0.0430 *
+  Low algo  (n<median): extreme_irr coef=+0.00313, t=+0.94, p=0.3466 n.s.
+
+── Cross-Market Correlation: Regime Descriptives ─────────────────────
+
+  Full sample:  mean=0.2202, std=0.2438
+  High coupling (>0.4):    767 days (26.3%)
+  Decoupled (<0):          629 days (21.6%)
+  Range: [-0.420, 0.723]

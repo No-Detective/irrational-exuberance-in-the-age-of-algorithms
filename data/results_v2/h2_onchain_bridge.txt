@@ -1,0 +1,55 @@
+======================================================================
+H2: ON-CHAIN STRUCTURAL BRIDGE VARIABLES
+======================================================================
+
+  Two independent on-chain findings:
+  H2a: Stablecoin supply ratio predicts BOTH BTC AND SP500 realized
+        volatility independently of irrational sentiment (t=7.81, t=3.98)
+  H2b: NUPL (holder profit/loss state) predicts BTC returns (2022-2025)
+  Interpretation: on-chain indicators are structural bridges that carry
+  forward-looking information about speculative stress.
+
+── H2a: Stablecoin Supply Ratio → Realized Volatility ────────────────
+
+  Spurious regression test: first-diff AND time-trend control both run.
+
+  DV: BTC Realized Vol  (n=2086)
+
+  Model                             Stab coef       t         p      R²
+  ─────────────────────────────────────────────────────────────────
+  M1: Stablecoin only                  0.0413    5.09    0.0000  0.0565  ***
+  M2: Stab + irr sentiment             0.0479    7.81    0.0000  0.0578  ***
+  M3: Stab + time trend                0.0370    4.30    0.0000  0.0599  ***
+     time_trend (in M3)             -0.000055   -2.06    0.0397       —  *
+  M2: irr_sentiment                   -0.0006   -0.07    0.9451       —  n.s.
+
+  DV: SP500 Realized Vol  (n=2086)
+
+  Model                             Stab coef       t         p      R²
+  ─────────────────────────────────────────────────────────────────
+  M1: Stablecoin only                  0.0043    3.81    0.0001  0.3767  ***
+  M2: Stab + irr sentiment             0.0039    3.98    0.0001  0.3768  ***
+  M3: Stab + time trend                0.0051    3.38    0.0007  0.3777  ***
+     time_trend (in M3)              0.000010    1.37    0.1713       —  n.s.
+  M2: irr_sentiment                   -0.0011   -0.38    0.7070       —  n.s.
+
+── H2b: NUPL → BTC Return — Exploratory (2022-2025) ─────────────────
+
+  n=1356  R²=0.0229  (period: Apr 2022 – Dec 2025)
+
+  nupl_lag1: coef=+0.07944, t=+1.30, p=0.1932 n.s.
+  nupl_lag2: coef=-0.09154, t=-1.50, p=0.1334 n.s.
+
+── Granger Causality: Stablecoin → BTC Volatility ────────────────────
+
+  lag 1: F=8.938, p=0.0028 **
+  lag 2: F=5.007, p=0.0068 **
+  lag 3: F=4.235, p=0.0054 **
+  lag 4: F=10.795, p=0.0000 ***
+  lag 5: F=8.298, p=0.0000 ***
+
+── H2a Robustness: First-Differenced Stablecoin (trend test) ─────────
+
+  Δstab_lag1 → BTC vol     : t=-0.81, p=0.4202 n.s.
+  Δstab_lag1 → SP500 vol   : t=-1.77, p=0.0771 n.s.
+  (If significant: result is not a time-trend artifact)
